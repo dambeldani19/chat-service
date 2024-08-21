@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    image: chat-service
+    container_name: chat-service
+    depends_on:
+      - db
+    environment:
+      - PORT=8080
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - DB_URL=0.0.0.3:3307
+      - DB_DATABASE=chat-service
+    ports:
+      - "8080:8080"
+    networks:
+      - app_network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: chat-service
+    ports:
+      - "3307:3307"  # Ganti port host menjadi 3307
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

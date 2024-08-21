@@ -1,0 +1,7 @@
+name: limit
+in: query
+description: how many items to return at one time (max 100)
+required: true
+schema:
+  type: integer
+  format: int32

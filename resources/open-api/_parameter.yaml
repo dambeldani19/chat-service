@@ -1,0 +1,29 @@
+# query param
+limit:
+  $ref: "./common/query/limit.yaml"
+page:
+  $ref: "./common/query/page.yaml"
+act:
+  $ref: "./common/query/act.yaml"
+group:
+  $ref: "./common/query/group.yaml"
+latest:
+  $ref: "./common/query/latest.yaml"
+sort:
+  $ref: "./common/query/sort.yaml"
+status:
+  $ref: "./common/query/status.yaml"
+next:
+  $ref: "./common/query/next.yaml"
+prev:
+  $ref: "./common/query/prev.yaml"
+
+# path param
+intID:
+  $ref: "./common/path/int_id.yaml"
+code:
+  $ref: "./common/path/str_code.yaml"
+convCode:
+  $ref: "./common/path/str_conv_code.yaml"
+msgCode:
+  $ref: "./common/path/str_msg_code.yaml"

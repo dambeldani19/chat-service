@@ -1,0 +1,9 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  created_at:
+    type: string
+    format: date-time
+    example: "2024-08-21T21:31:41.342336882+07:00"

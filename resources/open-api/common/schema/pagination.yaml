@@ -1,0 +1,16 @@
+type: object
+properties:
+  prev:
+    type: string
+    example: "previous page"
+  next:
+    type: string
+    example: "next page"
+  total_bots:
+    type: integer
+    example: 5
+  total_messages:
+    type: integer
+    example: 15
+  
+

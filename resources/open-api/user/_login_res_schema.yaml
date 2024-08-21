@@ -1,0 +1,14 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  username:
+    type: string
+    example: "dani"
+  email:
+    type: string
+    example: "dani@gmail.com"
+  token:
+    type: string
+    example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzI0MjU5Mzk2LCJuYmYiOjE3MjQyNTU3OTYsImlhdCI6MTcyNDI1NTc5Nn0.MN1azgXgRygGAcHv8tMZQ_Dn15S1pNT2oW8EGBd3tnI"

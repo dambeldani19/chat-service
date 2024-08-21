@@ -1,0 +1,6 @@
+Other200:
+  $ref: "./common/resp/other_200.yaml"
+Other401:
+  $ref: "./common/resp/other_401.yaml"
+Other400:
+  $ref: "./common/resp/other_400.yaml"

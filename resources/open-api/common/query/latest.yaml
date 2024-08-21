@@ -1,0 +1,6 @@
+name: latest
+in: query
+description: for calculate data next page (for pagination)
+required: false
+schema:
+  type: string

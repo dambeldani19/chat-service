@@ -1,0 +1,19 @@
+description: other than 400
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - code
+        - status
+        - message
+      properties:
+        code:
+          type: string
+          example: "ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION"
+        status:
+          type: string
+          example: "can be a custom message"
+        message:
+          type: string
+          example: "can be a custom message"

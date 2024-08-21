@@ -1,0 +1,31 @@
+post:
+  summary: Create Conversation
+  operationId: create conversation
+  description: create new conversation
+  tags:
+    - conv
+  security:
+    - bearerAuth: []
+  responses:
+    '200': 
+      description: success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                example: "APP:SUCCESS | ERR:VALIDATION"
+              status:
+                type: string
+                example: "success"
+              message:
+                type: string
+                example: "success"
+              data:
+                $ref: "./_conv_create_res.yaml"
+    '400': 
+      $ref: "../common/resp/other_400.yaml"
+    default:
+      $ref: "../common/resp/other_200.yaml"

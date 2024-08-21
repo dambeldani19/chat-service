@@ -1,0 +1,6 @@
+name: order_by
+in: query
+description: order data by name or other default latest_msg_at
+required: false
+schema:
+  type: string

@@ -1,0 +1,7 @@
+name: is_online
+in: query
+description: for filter is online bot 1 or 0
+required: false
+schema:
+  type: string
+  example: "1 or 0"

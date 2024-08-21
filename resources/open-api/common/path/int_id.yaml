@@ -1,0 +1,6 @@
+name: intID
+in: path
+required: true
+description: the id of rosources data
+schema:
+  type: integer

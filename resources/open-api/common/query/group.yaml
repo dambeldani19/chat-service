@@ -1,0 +1,6 @@
+name: group
+in: query
+description: query string for filter by group name
+required: false
+schema:
+  type: string

@@ -1,0 +1,19 @@
+# Common schema
+Pagination:
+  $ref: "./common/schema/pagination.yaml"
+
+# API Schema =
+RegisterReq:
+  $ref: "./user/_register_req_schema.yaml"
+UserResp:
+  $ref: "./user/_user_schema.yaml"
+LoginReq:
+  $ref: "./user/_login_req_schema.yaml"
+LoginRes:
+  $ref: "./user/_login_res_schema.yaml"
+CreateConvRes:
+  $ref: "./conv/_conv_create_res.yaml"
+SendMessageReq:
+  $ref: "./conv/_send_message_req_schema.yaml"
+MessageRes:
+  $ref: "./conv/_message_res_schema.yaml"

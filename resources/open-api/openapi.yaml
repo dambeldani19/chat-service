@@ -1,0 +1,31 @@
+openapi: 3.0.0
+
+info:
+  title: Chat Management Api
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080
+    description: Local Server run on port 8080
+
+paths:
+  /api/users:
+    $ref: "./user/register.yaml"
+  /api/login:
+    $ref: "./user/login.yaml"
+  /api/users/{id}:
+    $ref: "./user/user.yaml"
+  /api/conversations:
+    $ref: "./conv/create_conv.yaml"
+  /api/conversations/{id}/messages:
+    $ref: "./conv/send_message.yaml"
+  
+components:
+  parameters:
+    $ref: "./_parameter.yaml"
+  schemas:
+    $ref: "./_schema.yaml"
+  securitySchemes:
+    $ref: "./common/security/bearer.yaml"
+  responses:
+    $ref: "./_response.yaml"

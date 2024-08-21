@@ -1,0 +1,6 @@
+name: prev
+in: query
+description: parameter prev
+required: false
+schema:
+  type: string

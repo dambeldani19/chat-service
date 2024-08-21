@@ -1,0 +1,7 @@
+name: page
+in: query
+description: the current page of items (for pagination)
+required: true
+schema:
+  type: integer
+  format: int32

@@ -1,0 +1,6 @@
+name: strConvCode
+in: path
+required: true
+description: code key for Conv code
+schema:
+  type: string

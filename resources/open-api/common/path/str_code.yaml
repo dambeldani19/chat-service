@@ -1,0 +1,6 @@
+name: strCode
+in: path
+required: true
+description: code key for all items
+schema:
+  type: string

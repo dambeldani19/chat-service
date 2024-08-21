@@ -1,0 +1,6 @@
+name: strMsgCode
+in: path
+required: true
+description: code key for message code
+schema:
+  type: string

@@ -1,0 +1,6 @@
+name: next
+in: query
+description: parameter next
+required: false
+schema:
+  type: string

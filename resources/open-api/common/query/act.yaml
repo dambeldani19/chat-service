@@ -1,0 +1,6 @@
+name: act
+in: query
+description: query string for action process
+required: false
+schema:
+  type: string

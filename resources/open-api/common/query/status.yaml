@@ -1,0 +1,6 @@
+name: status
+in: query
+description: for filter status bot
+required: false
+schema:
+  type: string

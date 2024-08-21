@@ -1,0 +1,489 @@
+openapi: 3.0.0
+info:
+  title: Chat Management Api
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080'
+    description: Local Server run on port 8080
+paths:
+  /api/users:
+    post:
+      summary: register
+      operationId: register
+      description: register new user
+      tags:
+        - auth
+      requestBody:
+        description: register new user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterReq'
+      responses:
+        '200':
+          description: register success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'APP:SUCCESS | ERR:VALIDATION'
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    $ref: '#/components/schemas/UserResp'
+        '400':
+          $ref: '#/components/responses/Other400'
+        default:
+          $ref: '#/components/responses/Other200'
+  /api/login:
+    post:
+      summary: login
+      operationId: login
+      description: login user
+      tags:
+        - auth
+      requestBody:
+        description: login user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginReq'
+      responses:
+        '200':
+          description: login success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'APP:SUCCESS | ERR:VALIDATION'
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    $ref: '#/components/schemas/LoginRes'
+        '400':
+          $ref: '#/components/responses/Other400'
+        default:
+          $ref: '#/components/responses/Other200'
+  '/api/users/{id}':
+    get:
+      summary: Get User Detail
+      operationId: get user detail
+      description: get user detail
+      tags:
+        - users
+      parameters:
+        - $ref: '#/components/parameters/intID'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  status:
+                    type: string
+                    example: can be a custom message
+                  message:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    $ref: '#/components/schemas/UserResp'
+        '400':
+          $ref: '#/components/responses/Other400'
+        default:
+          $ref: '#/components/responses/Other200'
+  /api/conversations:
+    post:
+      summary: Create Conversation
+      operationId: create conversation
+      description: create new conversation
+      tags:
+        - conv
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'APP:SUCCESS | ERR:VALIDATION'
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    $ref: '#/components/schemas/CreateConvRes'
+        '400':
+          $ref: '#/components/responses/Other400'
+        default:
+          $ref: '#/components/responses/Other200'
+  '/api/conversations/{id}/messages':
+    post:
+      summary: Send Message
+      operationId: Send Message
+      description: Send Message
+      tags:
+        - conv
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Send Message
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendMessageReq'
+      responses:
+        '200':
+          description: Send Message success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'APP:SUCCESS | ERR:VALIDATION'
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    $ref: '#/components/schemas/MessageRes'
+        '400':
+          $ref: '#/components/responses/Other400'
+        '401':
+          $ref: '#/components/responses/Other401'
+        default:
+          $ref: '#/components/responses/Other200'
+    get:
+      summary: Get Conversation Message BY ID
+      operationId: Get Conversation Message BY ID
+      description: Get Conversation Message BY ID
+      tags:
+        - conv
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/intID'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  status:
+                    type: string
+                    example: can be a custom message
+                  message:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    $ref: '#/components/schemas/MessageRes'
+        '400':
+          $ref: '#/components/responses/Other400'
+        '401':
+          $ref: '#/components/responses/Other401'
+        default:
+          $ref: '#/components/responses/Other200'
+components:
+  parameters:
+    limit:
+      name: limit
+      in: query
+      description: how many items to return at one time (max 100)
+      required: true
+      schema:
+        type: integer
+        format: int32
+    page:
+      name: page
+      in: query
+      description: the current page of items (for pagination)
+      required: true
+      schema:
+        type: integer
+        format: int32
+    act:
+      name: act
+      in: query
+      description: query string for action process
+      required: false
+      schema:
+        type: string
+    group:
+      name: group
+      in: query
+      description: query string for filter by group name
+      required: false
+      schema:
+        type: string
+    latest:
+      name: latest
+      in: query
+      description: for calculate data next page (for pagination)
+      required: false
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: for sort like desc or asc
+      required: false
+      schema:
+        type: string
+    status:
+      name: status
+      in: query
+      description: for filter status bot
+      required: false
+      schema:
+        type: string
+    next:
+      name: next
+      in: query
+      description: parameter next
+      required: false
+      schema:
+        type: string
+    prev:
+      name: prev
+      in: query
+      description: parameter prev
+      required: false
+      schema:
+        type: string
+    intID:
+      name: intID
+      in: path
+      required: true
+      description: the id of rosources data
+      schema:
+        type: integer
+    code:
+      name: strCode
+      in: path
+      required: true
+      description: code key for all items
+      schema:
+        type: string
+    convCode:
+      name: strConvCode
+      in: path
+      required: true
+      description: code key for Conv code
+      schema:
+        type: string
+    msgCode:
+      name: strMsgCode
+      in: path
+      required: true
+      description: code key for message code
+      schema:
+        type: string
+  schemas:
+    Pagination:
+      type: object
+      properties:
+        prev:
+          type: string
+          example: previous page
+        next:
+          type: string
+          example: next page
+        total_bots:
+          type: integer
+          example: 5
+        total_messages:
+          type: integer
+          example: 15
+    RegisterReq:
+      type: object
+      properties:
+        username:
+          type: string
+          example: dani
+        email:
+          type: string
+          example: dani@gmail.com
+        password:
+          type: string
+          example: '123123'
+    UserResp:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 8
+        username:
+          type: string
+          example: ayang
+        email:
+          type: string
+          example: ayang@gmail.com
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-08-21T21:31:41.342336882+07:00'
+    LoginReq:
+      type: object
+      properties:
+        email:
+          type: string
+          example: dani@gmail.com
+        password:
+          type: string
+          example: '123123'
+    LoginRes:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        username:
+          type: string
+          example: dani
+        email:
+          type: string
+          example: dani@gmail.com
+        token:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoxNzI0MjU5Mzk2LCJuYmYiOjE3MjQyNTU3OTYsImlhdCI6MTcyNDI1NTc5Nn0.MN1azgXgRygGAcHv8tMZQ_Dn15S1pNT2oW8EGBd3tnI
+    CreateConvRes:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-08-21T21:31:41.342336882+07:00'
+    SendMessageReq:
+      type: object
+      properties:
+        sender_id:
+          type: integer
+          example: 1
+        content:
+          type: string
+          example: halo apa kabar
+    MessageRes:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        conversation_id:
+          type: integer
+          example: 1
+        sender_id:
+          type: integer
+          example: 1
+        content:
+          type: string
+          example: halo apa kabar
+        sent_at:
+          type: string
+          format: date-time
+          example: '2024-08-21T21:29:37.890219903+07:00'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    Other200:
+      description: other than 200
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - status
+              - message
+              - data
+            properties:
+              code:
+                type: string
+                example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+              status:
+                type: string
+                example: can be a custom message
+              message:
+                type: string
+                example: can be a custom message
+              data:
+                type: object
+    Other401:
+      description: authorization error response
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - status
+              - message
+            properties:
+              code:
+                type: string
+                example: 'ERR:AUTHORIZATION'
+              status:
+                type: string
+                example: Access token is missing or invalid
+              message:
+                type: string
+                example: Access token is missing or invalid
+    Other400:
+      description: other than 400
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - code
+              - status
+              - message
+            properties:
+              code:
+                type: string
+                example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+              status:
+                type: string
+                example: can be a custom message
+              message:
+                type: string
+                example: can be a custom message

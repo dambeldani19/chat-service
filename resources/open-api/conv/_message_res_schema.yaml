@@ -1,0 +1,18 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  conversation_id:
+    type: integer
+    example: 1
+  sender_id:
+    type: integer
+    example: 1
+  content:
+    type: string
+    example: "halo apa kabar"
+  sent_at:
+    type: string
+    format: date-time
+    example: "2024-08-21T21:29:37.890219903+07:00"

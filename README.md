@@ -1,6 +1,6 @@
 step menjalankan chat service
 
-1. buat database baru di local, import database dump-chat-service-202408220217.sql 
+1. buat database baru dengan nama "chat-service" di local, import database dump-chat-service-202408220217.sql 
 2. jalan kan service run man.go
 3. import file openapi.yaml di build-openapi/openapi.yaml, di postman
 4. untuk akses api, user harus register terlebih dahulu

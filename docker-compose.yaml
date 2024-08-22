@@ -10,7 +10,7 @@ services:
       - PORT=8080
       - DB_USERNAME=root
       - DB_PASSWORD=root
-      - DB_URL=db:3307
+      - DB_URL=localhost:3307
       - DB_DATABASE=chat-service
     ports:
       - "8080:8080"
@@ -24,9 +24,17 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: chat-service
     ports:
-      - "3306:3306"  
+      - "3307"  
+    expose:
+      - "3307"
     networks:
       - app_network
+    volumes:
+      - data-db:/var/lib/mysql
+      - ./dump-chat-service-202408220217.sql:/docker-entrypoint-initdb.d/dump-chat-service-202408220217.sql
+
+volumes:
+  data-db:
 
 networks:
   app_network:

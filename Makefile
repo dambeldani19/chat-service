@@ -11,3 +11,18 @@ docker-build:
 	@echo build docker
 	@docker build --tag chat-service .
 
+docker-down:
+	@echo down docker
+	@docker-compose down
+	@docker rmi chat-service
+
+docker-up:
+	@echo up docker
+	@docker build --tag chat-service .
+	@docker-compose up
+
+docker-exec:
+	@docker exec -it mysql_container /bin/bash
+
+
+

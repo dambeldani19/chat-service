@@ -38,9 +38,6 @@ COPY --from=builder /etc/passwd /etc/passwd
 
 # Copy the executable.
 COPY --from=builder /go/bin/chat-service /go/bin/chat-service
-COPY --from=builder /go/src/chat-service/.env /go/bin/.env
-
-# Menyalin file .env
-COPY .env .env
+COPY --from=builder /go/src/chat-service/.env .env
 
 ENTRYPOINT ["/go/bin/chat-service", "-conf", "/go/bin/.env"]

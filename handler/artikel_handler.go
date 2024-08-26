@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"chat-service/dto"
+	"chat-service/helper"
 	"chat-service/service"
 	"net/http"
 	"strconv"
@@ -32,5 +34,11 @@ func (h *artikelHandler) GetListArtikel(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, err.Error())
 	}
 
-	c.JSON(http.StatusOK, list)
+	res := helper.Response(dto.ResponseParam{
+		StatusCode: http.StatusOK,
+		Message:    "Get list artikel success",
+		Data:       list,
+	})
+
+	c.JSON(http.StatusOK, res)
 }

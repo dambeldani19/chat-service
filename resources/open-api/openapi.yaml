@@ -19,7 +19,9 @@ paths:
     $ref: "./conv/create_conv.yaml"
   /api/conversations/{id}/messages:
     $ref: "./conv/send_message.yaml"
-  
+  /api/artikels:
+    $ref: "./artikel/artikel.yaml"
+
 components:
   parameters:
     $ref: "./_parameter.yaml"

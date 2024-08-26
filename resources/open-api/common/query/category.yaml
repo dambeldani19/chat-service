@@ -1,0 +1,6 @@
+name: category_id
+in: query
+description: for filter category
+required: false
+schema:
+  type: int

@@ -217,6 +217,90 @@ paths:
           $ref: '#/components/responses/Other401'
         default:
           $ref: '#/components/responses/Other200'
+  /api/artikels:
+    get:
+      summary: artikel
+      operationId: get artikel
+      description: get artikel
+      tags:
+        - artikel
+      parameters:
+        - name: category_id
+          in: query
+          description: for filter category
+          required: false
+          schema:
+            type: int
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stat_code:
+                    type: string
+                    example: 'ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION'
+                  stat_msg:
+                    type: string
+                    example: can be a custom message
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        creator_id:
+                          type: integer
+                          example: 123
+                        creator:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 1
+                            username:
+                              type: string
+                              example: johndoe
+                            email:
+                              type: string
+                              example: johndoe@example.com
+                            created_at:
+                              type: string
+                              format: date-time
+                              example: '2024-08-26T10:20:30Z'
+                        categories:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                example: 2
+                              name:
+                                type: string
+                                example: Technology
+                        title:
+                          type: string
+                          example: How to Use Golang for Web Development
+                        content:
+                          type: string
+                          example: This is a comprehensive guide on using Golang for web development...
+                        total_like:
+                          type: integer
+                          example: 15
+                        total_comment:
+                          type: integer
+                          example: 5
+                        created_at:
+                          type: string
+                          format: date-time
+                          example: '2024-08-26T10:20:30Z'
+        default:
+          $ref: '#/components/responses/Other200'
 components:
   parameters:
     limit:

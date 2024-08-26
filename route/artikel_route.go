@@ -14,7 +14,7 @@ func ArtikelRouter(api *gin.RouterGroup) {
 	srv := service.NewArtikelService(repo)
 	h := handler.NewArtikelHandler(srv)
 
-	r := api.Group("/artikel")
+	r := api.Group("/artikels")
 
 	r.GET("/", h.GetListArtikel)
 }

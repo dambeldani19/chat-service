@@ -1,0 +1,28 @@
+get:
+  summary: artikel
+  operationId: get artikel
+  description: "get artikel"
+  tags:
+    - artikel
+  parameters:
+    - $ref: "../common/query/category.yaml"
+  responses:
+    '200': 
+      description: Success
+      content: 
+        application/json:
+          schema:
+            type: object
+            properties:
+              stat_code:
+                type: string
+                example: "ERR:BAD_REQUEST | ERR:VALIDATION | ERR:AUTHENTICATION"
+              stat_msg:
+                type: string
+                example: "can be a custom message"
+              data:
+                type: array
+                items:
+                  $ref: "./_artikel_schema.yaml"
+    default:
+      $ref: "../common/resp/other_200.yaml"

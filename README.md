@@ -68,6 +68,7 @@
      docker compose up
      ```
 
+** design database dan api **
 users
  id
  name
@@ -116,5 +117,49 @@ emoji_artikels
  type
 
 #api send emoji by artikel_id
+
+
+// note
+1. tambahan api get artikel berdasarkan category_id
+2. import database baru dump-chat-service-202408261708.sql
+3. ada tambahan table categories, artikels, artikel_emojis, artikel_comments, artikel_categoris
+4. openapi terbaru bisa di import dari _build-openapi/openapi.yaml, ada tambahan get list artikel
+
+
+contoh response get list artikel:
+{
+    "code": 200,
+    "status": "success",
+    "message": "Get list artikel success",
+    "data": [
+        {
+            "id": 12,
+            "creator_id": 1,
+            "creator": {
+                "id": 1,
+                "username": "dani",
+                "email": "dani@gmail.com",
+                "created_at": "2024-08-21T09:33:09Z"
+            },
+            "categories": [
+                {
+                    "id": 1,
+                    "name": "entertaiment"
+                }
+            ],
+            "title": "test title",
+            "content": "ini content",
+            "total_like": 1,
+            "total_comment": 1,
+            "created_at": "2024-08-26T14:54:20Z"
+        }
+    ]
+}
+
+
+
+
+
+
 
 

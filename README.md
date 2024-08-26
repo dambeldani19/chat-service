@@ -127,6 +127,7 @@ emoji_artikels
 
 
 contoh response get list artikel:
+```json
 {
     "code": 200,
     "status": "success",
@@ -155,6 +156,7 @@ contoh response get list artikel:
         }
     ]
 }
+
 
 
 

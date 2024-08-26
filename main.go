@@ -24,6 +24,7 @@ func main() {
 
 	route.AuthRouter(api)
 	route.ConvRouter(api)
+	route.ArtikelRouter(api)
 
 	r.Run(fmt.Sprintf(":%v", config.ENV.PORT)) // listen and serve on 0.0.0.0:8080
 }

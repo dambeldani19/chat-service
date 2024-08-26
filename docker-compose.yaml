@@ -31,7 +31,7 @@ services:
       - app_network
     volumes:
       - data-db:/var/lib/mysql
-      - ./dump-chat-service-202408220217.sql:/docker-entrypoint-initdb.d/dump-chat-service-202408220217.sql
+      - ./dump-chat-service-202408261708.sql:/docker-entrypoint-initdb.d/dump-chat-service-202408261708.sql
 
 volumes:
   data-db:

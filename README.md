@@ -15,7 +15,7 @@
 
 2. **Buat Database:**
    - Buat database baru dengan nama `chat-service` di local.
-   - Import file `database dump` dengan nama `dump-chat-service-202408220217.sql` ke dalam database yang telah dibuat.
+   - Import file `database dump` dengan nama `dump-chat-service-202408261708.sql` ke dalam database yang telah dibuat.
 
 3. **Jalankan Service:**
    - Jalankan service dengan perintah:
@@ -67,4 +67,54 @@
      ```bash
      docker compose up
      ```
+
+users
+ id
+ name
+ image
+ created_at
+
+#api users
+ - login
+ - register
+ - get detail users by id
+
+#categoris
+ id
+ name
+ created_at
+
+#artikel_categoris
+ artikel_id
+ category_id
+
+
+artikels
+ id
+ creator_id // refer user_id
+ title
+ image
+ content
+ like
+ created_at
+
+ #api artikel
+ - get list artikel
+ - get detail artikel by id 
+ - comment artikel by artikel_id dan user_login_id
+ 
+
+comment_artikels
+ id
+ artikel_id
+ comment
+ created_at
+
+emoji_artikels
+ id
+ artikel_id
+ type
+
+#api send emoji by artikel_id
+
 

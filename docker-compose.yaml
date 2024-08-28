@@ -2,11 +2,16 @@ version: '3.8'
 
 services:
   app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: chat-service
     container_name: chat-service
+    restart: on-failure
     depends_on:
       - db
     environment:
+      - DEBUG=true
       - PORT=8080
       - DB_USERNAME=root
       - DB_PASSWORD=root
@@ -24,7 +29,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: chat-service
     ports:
-      - "3306:3306"  
+      - "3307:3306"  
     expose:
       - "3306"
     networks:
